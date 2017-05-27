@@ -1,8 +1,8 @@
-#include "Translator.h"
+п»ї#include "Translator.h"
 
 int main()
 {
-	char cur_char;  //Текущий считанный из файла символ
+	char cur_char;  //РўРµРєСѓС‰РёР№ СЃС‡РёС‚Р°РЅРЅС‹Р№ РёР· С„Р°Р№Р»Р° СЃРёРјРІРѕР»
 	string tr, opd, tm, ex, opr, st, in_file, test_str;
 	tr = "translator.txt";
 	opd = "operand.txt";
@@ -13,27 +13,27 @@ int main()
 
 	in_file = "input.txt";
 
-	//объявление автомата "Транслятор"
-	translator_sm trans(tr, opd, tm, ex, opr, st);
-	//Сброс автомата "Транслятор"
+	//РѕР±СЉСЏРІР»РµРЅРёРµ Р°РІС‚РѕРјР°С‚Р° "РўСЂР°РЅСЃР»СЏС‚РѕСЂ"
+	Translator_sm trans(tr, opd, tm, ex, opr, st);
+	//РЎР±СЂРѕСЃ Р°РІС‚РѕРјР°С‚Р° "РўСЂР°РЅСЃР»СЏС‚РѕСЂ"
 	trans.reset();
 
 
-	//открываем файловый поток связанный с входным файлом
+	//РѕС‚РєСЂС‹РІР°РµРј С„Р°Р№Р»РѕРІС‹Р№ РїРѕС‚РѕРє СЃРІСЏР·Р°РЅРЅС‹Р№ СЃ РІС…РѕРґРЅС‹Рј С„Р°Р№Р»РѕРј
 	ifstream input_file(in_file.c_str());
 	if (!input_file) {
 		cout << "\nError reading \"input.txt\". No such file!";
-		_getch();
-		//exit(1);
+		system("pause");
+		return 1;
 	}
 
-	//Посимвольно читаем файл
+	//РџРѕСЃРёРјРІРѕР»СЊРЅРѕ С‡РёС‚Р°РµРј С„Р°Р№Р»
 	while (!input_file.eof()) {
 		input_file.get(cur_char);
 		cout << cur_char;
 		if (cur_char != '\n') trans.input(cur_char);
 	}
 
-	_getch();
+	system("pause");
 	return 0;
 }
